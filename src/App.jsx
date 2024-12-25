@@ -1,8 +1,10 @@
+import LoginPage from "./pages/login";
+
 function App() {
   return (
     <>
-      <div className="flex justify-center bg-slate-600 min-h-screen items-center">
-        <div>Hello Andi</div>
+      <div className="flex justify-center min-h-screen items-center">
+       <LoginPage></LoginPage>
       </div>
     </>
   );
