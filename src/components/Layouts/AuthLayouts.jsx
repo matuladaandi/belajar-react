@@ -1,5 +1,3 @@
-import FormLogin from "../Fragments/FormLogin";
-
 const AuthLayout = (props) => {
   const { title,children } = props;
 
