@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Promise</title>
+</head>
+
+<body>
+  <script>
+    // Promise
+
+    // parameter 𝗿𝗲𝘀𝗼𝗹𝘃𝗲 𝗱𝗮𝗻 𝗿𝗲𝗷𝗲𝗰𝘁 sebenarnya adalah 𝗳𝘂𝗻𝗰𝘁𝗶𝗼𝗻
+    const promise = new Promise(function (resolve, reject) {
+      // 𝗰𝗼𝗱𝗲 yg nanti akan berjalan secara 𝗮𝘀𝘆𝗻𝗰 masukan dalam ini param Promise {}
+
+      // Ketika 𝗦𝘂𝗰𝗰𝗲𝘀 maka masukan dalam 𝗿𝗲𝘀𝗼𝗹𝘃𝗲
+      // resolve("Success")
+
+      // Ketika 𝗚𝗮𝗴𝗮𝗹 makan masukan dalam 𝗿𝗲𝗷𝗲𝗰𝘁
+      // reject("Error")
+
+      const ajax = new XMLHttpRequest();
+
+      // membuka  di api/product.json
+      ajax.open("GET", "api/product.json");
+
+      // ketika dapat datanya, lalu panggil callback
+      ajax.onload = function () {
+        // ketika ajax nya 𝘀𝘂𝗰𝗰𝗲𝘀, panggil resolve
+        if (ajax.status === 200) {
+          resolve(ajax.responseText)
+        } else {
+          // ketika 𝗲𝗿𝗿𝗼𝗿 atau 𝗴𝗮𝗴𝗮𝗹, panggil reject
+          reject(`Error Get Product with response : ${ajax.responseText}`)
+        }
+
+      };
+
+      ajax.send();
+    });
+
+    console.log(promise);
+
+  </script>
+</body>
+
+</html>

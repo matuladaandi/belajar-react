@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX-Response-Status</title>
+</head>
+
+<body>
+    <h3 id="res"></h3>
+    <script>
+        function displayResponse(json) {
+            const header = document.getElementById('res');
+            header.textContent = json.response // response adalah nama property
+        }
+
+        const ajax = new XMLHttpRequest();
+        ajax.open("GET", "api/hello.json")
+        ajax.addEventListener("load", function () {
+            if (ajax.status === 200) {
+                const json = JSON.parse(ajax.responseText)
+                displayResponse(json)
+            } else {
+                displayResponse({
+                    response: `Terjadi kesalahan dengan status ${ajax.status}`
+                })
+            }
+        })
+        ajax.send()
+
+    </script>
+</body>
+
+</html>

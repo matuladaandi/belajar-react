@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX</title>
+</head>
+
+<body>
+    <h3 id="res"></h3>
+    
+    <script>
+        const ajax = new XMLHttpRequest();
+
+        // hello.json adalah endpoint
+        ajax.open('GET', 'api/hello.json') //mau ambil data ke- api/hello.json
+
+        // 𝘀𝗲𝘁𝗲𝗹𝗮𝗵 𝗱𝗮𝗽𝗮𝘁 𝗿𝗲𝘀𝗽𝗼𝗻𝘀𝗲 maka akan 𝗱𝗶 𝗽𝗮𝗻𝗴𝗴𝗶𝗹 𝗰𝗮𝗹𝗹𝗯𝗮𝗰𝗸 nya Yakni anonymous function yang ada di 𝘀𝗲𝗯𝗲𝗹𝗮𝗵 𝗸𝗮𝗻𝗮𝗻 dekat "load"
+        ajax.addEventListener("load",function () {
+            const json = JSON.parse(ajax.responseText)
+            const header = document.getElementById('res')
+
+            // kenapa 𝗷𝘀𝗼𝗻.𝗿𝗲𝘀𝗽𝗼𝗻𝘀𝗲, Krn 𝗮𝘁𝘁𝗿𝗶𝗯𝘂𝘁𝗲 dari file ⁡⁣⁢‍‍‍hello.json 𝗻𝗮𝗺𝗮𝗻𝘆𝗮 𝗿𝗲𝘀𝗽𝗼𝗻𝘀𝗲
+            header.textContent = json.response;
+
+            // expected: <output> hello andi (di browser h3)
+        })
+        
+        // untuk mengirim request
+        ajax.send()
+    </script>
+</body>
+
+</html>

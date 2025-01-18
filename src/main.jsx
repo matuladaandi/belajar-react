@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import LoginPage from "./pages/login";
 import ErrorPage from "./pages/404";
+import ProductPage from "./pages/products";
 import RegisterPage from "./pages/register";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -10,7 +11,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <div>Hello Word</div>,
-    errorElement: <ErrorPage />
+    errorElement: <ErrorPage />,
   },
   {
     path: "/login",
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <RegisterPage />,
+  },
+  {
+    path: "/products",
+    element: <ProductPage />,
   },
 ]);
 

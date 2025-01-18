@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Api</title>
+    <style type="text/css">
+        body {
+            background-color: salmon;
+        }
+
+        .mainForm {
+            margin: 250px auto;
+            width: 400px;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            background: whitesmoke;
+
+        }
+
+        #login {
+            margin: 12px 12px;
+            display: flex;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="mainForm">
+        <form>
+            <label for="username">username :
+                <input type="text" id="username" name="username">
+            </label>
+            <br>
+            <label for="password">password :
+                <input type="text" id="password" name="password">
+            </label>
+            <br>
+            <input type="button" value="Login" id="login">
+        </form>
+    </div>
+    <h1 id="response"></h1>
+    <script>
+
+        // const req = new Request("url", optional);
+        function doLogin() {
+            // membuat req
+            const req = new Request("https://eoyx532xdx4dzf6.m.pipedream.net", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify({
+                    username: document.getElementById('username').value,
+                    password: document.getElementById('password').value
+                })
+            });
+
+            // setelah ambil data req nya
+            // Promise<Response> = promise yg isinya object response
+            const response = fetch(req)
+        }
+
+        document.getElementById('login').onclick = doLogin
+    </script>
+</body>
+
+</html>

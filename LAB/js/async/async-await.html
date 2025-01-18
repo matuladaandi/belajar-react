@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async Await</title>
+</head>
+
+<body>
+    <script>
+        // Promise<JSON Product>
+        function getProduct() {
+            const request = new Request("api/product.json", {
+                method: "GET"
+            })
+
+            const response = fetch(request)
+
+            return response.then((response) => response.json())
+        }
+
+        // 𝗰𝗮𝗿𝗮 𝗶𝗻𝗶 𝗮𝗴𝗮 𝗿𝗶𝗯𝗲𝘁
+        // getProduct().then((product) => console.log(product))
+        function getProductNamePromise() {
+            return new Promise((resolve, reject) => {
+                getProduct().then((product) => resolve(product.name))
+                    .catch((error) => resolve("Product Not Found"))
+            })
+        }
+
+        getProductNamePromise().then((productName) => console.log(productName))
+
+        // 𝗖𝗮𝗿𝗮 𝗦𝗶𝗺𝗽𝗹𝗲 𝗻𝘆𝗮
+        async function getProductAsync() {
+            // // tunggu sampai data pada getProduct() ada
+            // const product = await getProduct()
+            // return product.name
+
+            try {
+                // tunggu sampai data pada getProduct() ada
+                const product = await getProduct()
+                return product.name
+            } catch (e) {
+                return "Product Not Found"
+            }
+        }
+        getProductAsync().then((productName) => console.log(productName))
+
+    </script>
+</body>
+
+</html>
