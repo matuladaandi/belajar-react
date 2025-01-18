@@ -10,11 +10,13 @@ const CardProduct = (props) => {
   );
 };
 
-const Header = () => {
+const Header = (props) => {
+  const {image} = props
+  
   return (
     <a href="#">
       <img
-        src="/images/kursi-tua.jpg"
+        src={image}
         alt="kursi tua"
         className="p-8 rounded-t-lg"
       />
@@ -22,27 +24,27 @@ const Header = () => {
   );
 };
 
-const Body = () => {
+const Body = (props) => {
+  const { children, title } = props;
+
   return (
     <div className="px-5 pb-5">
       <a href="#">
         <h5 className="text-xl font-semibold tracking-tight text-white">
-          Kursi Bekas
+          {title}
         </h5>
-        <p className="text-s text-white">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque
-          eligendi libero minus odit saepe exercitationem voluptas dolor esse
-          voluptatibus ut?
-        </p>
+        <p className="text-s text-white">{children}</p>
       </a>
     </div>
   );
 };
 
-const Footer = () => {
+const Footer = (props) => {
+  const {price} = props
+  
   return (
     <div className="flex items-center justify-between px-5  pb-5">
-      <span className="text-xl font-bold text-white">Rp. 100.000</span>
+      <span className="text-xl font-bold text-white">{price}</span>
       <Button className="bg-blue-600">Add to Card</Button>
     </div>
   );
